@@ -1,0 +1,53 @@
+{
+  "MaxCount": 1,
+  "MinCount": 1,
+  "ImageId": "ami-053b0d53c279acc90",
+  "InstanceType": "t2.micro",
+  "KeyName": "terra-key",
+  "EbsOptimized": false,
+  "NetworkInterfaces": [
+    {
+      "AssociatePublicIpAddress": true,
+      "DeviceIndex": 0,
+      "Groups": [
+        "<groupId of the new security group created below>"
+      ]
+    }
+  ],
+  "TagSpecifications": [
+    {
+      "ResourceType": "instance",
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "Terra"
+        }
+      ]
+    }
+  ],
+  "PrivateDnsNameOptions": {
+    "HostnameType": "ip-name",
+    "EnableResourceNameDnsARecord": true,
+    "EnableResourceNameDnsAAAARecord": false
+  }
+}
+{
+  "GroupName": "terra_sg",
+  "Description": "terra_sg",
+  "VpcId": "vpc-0fc259a08e2daa629"
+}
+{
+  "GroupId": "<groupId of the security group created above>",
+  "IpPermissions": [
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 22,
+      "ToPort": 22,
+      "IpRanges": [
+        {
+          "CidrIp": "98.37.117.103/32"
+        }
+      ]
+    }
+  ]
+}
